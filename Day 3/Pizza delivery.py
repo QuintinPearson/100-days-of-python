@@ -19,13 +19,15 @@ elif size == "m":
 elif size == "l":
   bill += 140
 
-print(bill)
 
 # Ask if they want pepperoni 
 pepperoni = input ("Do you want pepperoni? 'y' or 'n'.\n")
 # Work out bill with Pepperoni
 if pepperoni == "y":
-  bill += 25
+  if size == "s":
+    bill += 25
+  else:
+    bill += 30  
 
 # Ask if they want extra cheese
 extra_cheese = input("Do you want extra cheese? 'y' or 'n'.\n")
