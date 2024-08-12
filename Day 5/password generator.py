@@ -5,7 +5,7 @@ numbers = list('0123456789')
 symbols = list('!@#$%^&*()-_=+[]{}|;:,.<>?/~`')
 letters = list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz')
 
-
+# Create a function that creates the password
 def generate_password(num_amount, symbols_amount, letters_amount):
     password_array = []
 
@@ -24,6 +24,11 @@ def generate_password(num_amount, symbols_amount, letters_amount):
     return "".join(password_array)
 
 
-password = generate_password(4, 2, 3)
+num_amount = int(input("How many Numbers do you want in your password?\n"))
+symbols_amount = int(input("How many Symbols do you want in your password?\n"))
+letters_amount = int(input("How many letters do you want in your password?\n"))
+
+
+password = generate_password(num_amount, symbols_amount, letters_amount)
 
 print(password)
