@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>HangMan</h1>
+      <p><pre>{{logo}}</pre></p>
+      <p><pre>{{current_stage}}</pre></p>
+      <p>Word: {{ word_display }}</p>
+      <p>Guesses: {{guesses}}</p>
+      <p>Misses: {{misses}}</p>
+      <p>Message: {{message}}</p>
+
+      {% if "_" not in word_display %}
+      <p id="won">Congratulations, You Won!</p>
+      <a href="{{ url_for('reset') }}">Reset</a>
+      
+      {% elif misses >= 6 %}
+      <p>Sorry, You Lost!, the word was {{word}}</p>
+      <a href="{{ url_for('reset') }}">Try Again</a>
+      {% else %}
+      <form  action="{{url_for("guess")}}" method='POST'>
+        <input id="guess" type="text" name="guess" maxlength="1" required>
+        <button type="submit">Guess</button>
+        
+      <script>
+        // Had an issue where I had to click on the input each time. Wrote the below to make it focus automatically after each refresh
+        // Focus on input after page refresh
+        window.onload = function() {
+            document.getElementById("guess").focus();
+        };
+      </script>
+
+      </form>
+      {% endif %}
+
+    </div>
+  </body>
+</html>
